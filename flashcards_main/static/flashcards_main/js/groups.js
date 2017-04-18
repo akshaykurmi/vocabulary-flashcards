@@ -20,3 +20,19 @@ $("#addGroupButton").click(function() {
     $('#addGroupModal').modal('hide');
     $("#groupName").val("")
 });
+
+function deleteGroup(groupId) {
+    console.log(groupId);
+    $("#deleteGroupConfirmationModal").modal("show");
+    $("#deleteGroupConfirmationButton").click(function() {
+        var send = {"groupId": groupId};
+        $.post("/deleteGroup/", send, function(data) {
+            if(data["success"]) {
+                location.reload();
+            } else {
+                $('.container').prepend(error_message(data["errorMessage"]));
+            }
+        });
+        $("#deleteGroupConfirmationModal").modal("hide");
+    });
+}

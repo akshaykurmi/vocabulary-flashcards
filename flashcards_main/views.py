@@ -19,3 +19,16 @@ def add_group(request):
     group = Group(name=group_name)
     group.save()
     return JsonResponse({"success": True})
+
+
+@csrf_exempt
+def delete_group(request):
+    group_id = request.POST.get("groupId", None)
+    print(group_id)
+    if not group_id:
+        return JsonResponse({"success": False, "errorMessage": "This Group cannot be identified"})
+    if not Group.objects.filter(id=group_id).exists():
+        return JsonResponse({"success": False, "errorMessage": "This Group does not exist"})
+    group = Group.objects.get(id=group_id)
+    group.delete()
+    return JsonResponse({"success": True})
