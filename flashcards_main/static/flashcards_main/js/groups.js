@@ -18,11 +18,10 @@ $("#addGroupButton").click(function() {
         }
     });
     $('#addGroupModal').modal('hide');
-    $("#groupName").val("")
+    $("#groupName").val("");
 });
 
 function deleteGroup(groupId) {
-    console.log(groupId);
     $("#deleteGroupConfirmationModal").modal("show");
     $("#deleteGroupConfirmationButton").click(function() {
         var send = {"groupId": groupId};
@@ -34,5 +33,22 @@ function deleteGroup(groupId) {
             }
         });
         $("#deleteGroupConfirmationModal").modal("hide");
+    });
+}
+
+function editGroup(groupId) {
+    $("#editGroupModal").modal("show");
+    $("#editGroupButton").click(function() {
+        var groupName = $("#editedGroupName").val();
+        var send = {"groupId": groupId, "groupName": groupName};
+        $.post("/editGroup/", send, function(data) {
+            if(data["success"]) {
+                location.reload();
+            } else {
+                $('.container').prepend(error_message(data["errorMessage"]));
+            }
+        });
+        $("#editGroupModal").modal("hide");
+        $("#editedGroupName").val("");
     });
 }
