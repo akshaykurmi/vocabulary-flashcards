@@ -74,3 +74,11 @@ function editCard(cardId) {
         $("#editedCardMnemonic").val("");
     });
 }
+
+function showCard(word, definition, sentence, mnemonic) {
+    $("#displayCardWord").text(word);
+    $("#displayCardDefinition").text(definition);
+    $("#displayCardSentence").text(sentence);
+    $("#displayCardMnemonic").text(mnemonic);
+    $("#showCardModal").modal("show");
+}

@@ -30,8 +30,8 @@
                             <h5><i class="glyphicon glyphicon-pencil"></i></h5>
                         </a>
                     </div>
-                    <a href="javascript: showCard({{card.word}}, {{card.definition}},
-                                        {{card.sample_sentence}}, {{card.mnemonic}})">
+                    <a href="javascript: showCard('{{ card.word }}', '{{ card.definition }}',
+                                            '{{ card.sample_sentence }}', '{{ card.mnemonic }}')">
                         <div class="card-body text-center">
                             <i class="fa fa-3x fa-list-alt"></i>
                             <h3><span>{{ card.word }}</span></h3>
@@ -159,6 +159,47 @@
     </div>
 </div>
 <!-- Edit Card Modal ends here -->
+
+<!-- Show Card Modal starts here -->
+<div class="modal fade" id="showCardModal" tabindex="-1" role="dialog" aria-labelledby="showCardModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="showCardModalLabel">Flashcard</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 id="displayCardWord"></h2>
+                <div>
+
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <td><strong>Definition: </strong></td>
+                                <td><p id="displayCardDefinition"></p></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sentence: </strong></td>
+                                <td><p id="displayCardSentence"></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mnemonic: </strong></td>
+                                <td><p id="displayCardMnemonic"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Show Card Modal ends here -->
 {% endblock %}
 
 
