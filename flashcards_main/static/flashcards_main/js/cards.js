@@ -48,7 +48,11 @@ function deleteCard(cardId) {
     });
 }
 
-function editCard(cardId) {
+function editCard(cardId, word, definition, sentence, mnemonic) {
+    $("#editedCardWord").val(word);
+    $("#editedCardDefinition").val(definition);
+    $("#editedCardSentence").val(sentence);
+    $("#editedCardMnemonic").val(mnemonic);
     $("#editCardModal").modal("show");
     $("#editCardButton").click(function() {
         var editedCardWord = $("#editedCardWord").val();

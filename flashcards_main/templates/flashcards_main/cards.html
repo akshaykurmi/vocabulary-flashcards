@@ -26,7 +26,8 @@
                         <a href="javascript: deleteCard({{ card.id }})" class="col-md-1 col-sm-1 pull-right">
                             <h5><i class="glyphicon glyphicon-trash"></i></h5>
                         </a>
-                        <a href="javascript: editCard({{ card.id }})" class="col-md-1 col-sm-1 pull-right">
+                        <a href="javascript: editCard({{ card.id }}, '{{ card.word }}', '{{ card.definition }}',
+                        '{{ card.sample_sentence }}', '{{ card.mnemonic }}')" class="col-md-1 col-sm-1 pull-right">
                             <h5><i class="glyphicon glyphicon-pencil"></i></h5>
                         </a>
                     </div>
@@ -72,7 +73,7 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="cardWord" class="form-control-label">Name:</label>
+                        <label for="cardWord" class="form-control-label">Word:</label>
                         <input type="text" class="form-control" id="cardWord">
                     </div>
                     <div class="form-group">
@@ -134,7 +135,7 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="editedCardWord" class="form-control-label">Name:</label>
+                        <label for="editedCardWord" class="form-control-label">Word:</label>
                         <input type="text" class="form-control" id="editedCardWord">
                     </div>
                     <div class="form-group">
