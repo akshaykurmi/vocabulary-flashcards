@@ -7,7 +7,6 @@ function error_message(message) {
 }
 
 $("#addDeckButton").click(function() {
-    console.log("clicked");
     var deckName = $("#deckName").val();
     var send = {"deckName": deckName}
     $.post("addDeck/", send, function(data) {

@@ -87,7 +87,6 @@ def delete_deck(request):
 def edit_deck(request):
     deck_id = request.POST.get("deckId", None)
     deck_name = request.POST.get("deckName", "")
-    print(deck_name, deck_id)
     if not deck_id:
         return JsonResponse({"success": False, "errorMessage": "This Deck cannot be identified"})
     if not Deck.objects.filter(id=deck_id).exists():
@@ -97,4 +96,52 @@ def edit_deck(request):
     if Deck.objects.filter(name=deck_name).exists():
         return JsonResponse({"success": False, "errorMessage": "Deck with given name already exists"})
     Deck.objects.filter(id=deck_id).update(name=deck_name)
+    return JsonResponse({"success": True})
+
+
+def cards(request, deck_id):
+    data = {"cards": FlashCard.objects.filter(deck_id=deck_id)}
+    return render(request, "flashcards_main/cards.html", data)
+
+
+@csrf_exempt
+def add_card(request, deck_id):
+    word = request.POST.get("cardWord", "")
+    definition = request.POST.get("cardDefinition", "")
+    sentence = request.POST.get("cardSentence", "")
+    mnemonic = request.POST.get("cardMnemonic", "")
+    if word == "" or definition == "":
+        return JsonResponse({"success": False, "errorMessage": "The Card's word/definition cannot be empty"})
+    card = FlashCard(word=word, definition=definition, sample_sentence=sentence, mnemonic=mnemonic, deck_id=deck_id)
+    card.save()
+    return JsonResponse({"success": True})
+
+
+@csrf_exempt
+def delete_card(request):
+    card_id = request.POST.get("cardId", None)
+    if not card_id:
+        return JsonResponse({"success": False, "errorMessage": "This Card cannot be identified"})
+    if not FlashCard.objects.filter(id=card_id).exists():
+        return JsonResponse({"success": False, "errorMessage": "This Card does not exist"})
+    card = FlashCard.objects.get(id=card_id)
+    card.delete()
+    return JsonResponse({"success": True})
+
+
+@csrf_exempt
+def edit_card(request):
+    card_id = request.POST.get("cardId", None)
+    word = request.POST.get("editedCardWord", "")
+    definition = request.POST.get("editedCardDefinition", "")
+    sentence = request.POST.get("editedCardSentence", "")
+    mnemonic = request.POST.get("editedCardMnemonic", "")
+    if not card_id:
+        return JsonResponse({"success": False, "errorMessage": "This Card cannot be identified"})
+    if not FlashCard.objects.filter(id=card_id).exists():
+        return JsonResponse({"success": False, "errorMessage": "This Card does not exist"})
+    if word == "" or definition == "":
+        return JsonResponse({"success": False, "errorMessage": "The Card's word/definition cannot be empty"})
+    FlashCard.objects.filter(id=card_id).update(word=word, definition=definition, sample_sentence=sentence,
+                                                mnemonic=mnemonic)
     return JsonResponse({"success": True})

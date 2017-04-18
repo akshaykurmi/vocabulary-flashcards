@@ -7,7 +7,6 @@ function error_message(message) {
 }
 
 $("#addGroupButton").click(function() {
-    console.log("clicked");
     var groupName = $("#groupName").val();
     var send = {"groupName": groupName}
     $.post("/addGroup/", send, function(data) {
