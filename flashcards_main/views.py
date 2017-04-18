@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import *
 
 
-def home(request):
+def groups(request):
     data = {"groups": Group.objects.all()}
     return render(request, "flashcards_main/groups.html", data)
 
