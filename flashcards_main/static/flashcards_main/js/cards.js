@@ -26,7 +26,13 @@ $("#addCardButton").click(function() {
             $('.container').prepend(error_message(data["errorMessage"]));
         }
     });
-    $('#addCardModal').modal('hide');
+    $("#cardWord").val("");
+    $("#cardDefinition").val("");
+    $("#cardSentence").val("");
+    $("#cardMnemonic").val("");
+});
+
+$("#cancelAddCardButton").click(function() {
     $("#cardWord").val("");
     $("#cardDefinition").val("");
     $("#cardSentence").val("");

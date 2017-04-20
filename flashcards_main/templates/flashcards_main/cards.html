@@ -62,14 +62,48 @@
                 </div>
             </div>
             {% endfor %}
-            <div class="col-md-3">
-                <div class="add-card-block col-md-12">
-                    <a data-toggle="modal" href="#addCardModal">
-                        <div class="card-body text-center">
-                            <i class="fa fa-3x fa-plus"></i>
-                            <h3><span>Add Card</span></h3>
+            <div class="col-md-3 flip-container" onclick="this.classList.toggle('hover');">
+                <div class="flipper">
+                    <div class="front">
+                        <div class="add-card-block">
+                            <div class="card-body-front text-center">
+                                <h1><span>Add Card</span></h1>
+                                <hr/>
+                                <i class="fa fa-5x fa-plus"></i>
+                            </div>
                         </div>
-                    </a>
+                    </div>
+                    <div class="back">
+                        <div class="card-block col-md-12">
+                            <div class="card-header row text-center">
+                                <h4> Enter the card's details </h4>
+                            </div>
+                            <div class="card-body-back">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="cardWord" class="form-control-label">Word:</label>
+                                        <input type="text" class="form-control" id="cardWord">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cardDefinition" class="form-control-label">Definition:</label>
+                                        <textarea rows=3 class="form-control" id="cardDefinition"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cardMnemonic" class="form-control-label">Mnemonic:</label>
+                                        <textarea rows=3 class="form-control" id="cardMnemonic"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cardSentence" class="form-control-label">Sample Sentence:</label>
+                                        <textarea rows=3 class="form-control" id="cardSentence"></textarea>
+                                    </div>
+                                </form>
+                                <button id="cancelAddCardButton" type="button" class="btn btn-danger">Cancel
+                                </button>
+                                <button id="addCardButton" type="button" class="btn btn-primary pull-right">Add Card
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -78,47 +112,6 @@
         <small class="pull-left">***</small>
     </div>
 </div>
-
-
-<!-- Add Card Modal starts here -->
-<div class="modal fade" id="addCardModal" tabindex="-1" role="dialog" aria-labelledby="addCardModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addCardModalLabel">Add Flashcard</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="cardWord" class="form-control-label">Word:</label>
-                        <input type="text" class="form-control" id="cardWord">
-                    </div>
-                    <div class="form-group">
-                        <label for="cardDefinition" class="form-control-label">Definition:</label>
-                        <textarea rows=3 class="form-control" id="cardDefinition"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="cardSentence" class="form-control-label">Sample Sentence:</label>
-                        <textarea rows=3 class="form-control" id="cardSentence"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="cardMnemonic" class="form-control-label">Mnemonic:</label>
-                        <textarea rows=3 class="form-control" id="cardMnemonic"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button id="addCardButton" type="button" class="btn btn-primary">Add Card</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Add Card Modal ends here -->
 
 <!--  Delete Card Confirmation Modal starts here -->
 <div class="modal fade" id="deleteCardConfirmationModal" tabindex="-1" role="dialog"
