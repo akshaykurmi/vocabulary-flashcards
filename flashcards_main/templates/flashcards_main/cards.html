@@ -20,28 +20,49 @@
     <div class="panel-body">
         <div class="row">
             {% for card in cards %}
-            <div class="col-md-4">
-                <div class="card-block col-md-12">
-                    <div class="card-header row">
-                        <a href="javascript: deleteCard({{ card.id }})" class="col-md-1 col-sm-1 pull-right">
-                            <h5><i class="glyphicon glyphicon-trash"></i></h5>
-                        </a>
-                        <a href="javascript: editCard({{ card.id }}, '{{ card.word }}', '{{ card.definition }}',
+            <div class="col-md-3 flip-container" onclick="this.classList.toggle('hover');">
+                <div class="flipper">
+                    <div class="front">
+                        <div class="card-block col-md-12">
+                            <div class="card-header row">
+                                <a href="javascript: deleteCard({{ card.id }})" class="col-md-1 col-sm-1 pull-right">
+                                    <h5><i class="glyphicon glyphicon-trash"></i></h5>
+                                </a>
+                                <a href="javascript: editCard({{ card.id }}, '{{ card.word }}', '{{ card.definition }}',
                         '{{ card.sample_sentence }}', '{{ card.mnemonic }}')" class="col-md-1 col-sm-1 pull-right">
-                            <h5><i class="glyphicon glyphicon-pencil"></i></h5>
-                        </a>
-                    </div>
-                    <a href="javascript: showCard('{{ card.word }}', '{{ card.definition }}',
-                                            '{{ card.sample_sentence }}', '{{ card.mnemonic }}')">
-                        <div class="card-body text-center">
-                            <i class="fa fa-3x fa-list-alt"></i>
-                            <h3><span>{{ card.word }}</span></h3>
+                                    <h5><i class="glyphicon glyphicon-pencil"></i></h5>
+                                </a>
+                            </div>
+                            <div class="card-body-front text-center">
+                                <h1><span>{{ card.word }}</span></h1>
+                                <hr/>
+                                <i class="fa fa-5x fa-list-alt"></i>
+                            </div>
                         </div>
-                    </a>
+                    </div>
+                    <div class="back">
+                        <div class="card-block col-md-12">
+                            <div class="card-header row">
+                                <a href="javascript: deleteCard({{ card.id }})" class="col-md-1 col-sm-1 pull-right">
+                                    <h5><i class="glyphicon glyphicon-trash"></i></h5>
+                                </a>
+                                <a href="javascript: editCard({{ card.id }}, '{{ card.word }}', '{{ card.definition }}',
+                        '{{ card.sample_sentence }}', '{{ card.mnemonic }}')" class="col-md-1 col-sm-1 pull-right">
+                                    <h5><i class="glyphicon glyphicon-pencil"></i></h5>
+                                </a>
+                            </div>
+                            <div class="card-body-back">
+                                <h2><span>{{ card.word }}</span></h2>
+                                <p><strong>Definition: </strong> {{ card.definition }}</p>
+                                <p><strong>Mnemonic: </strong> {{ card.mnemonic }}</p>
+                                <p><strong>Sentence: </strong> {{ card.sample_sentence }}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             {% endfor %}
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="add-card-block col-md-12">
                     <a data-toggle="modal" href="#addCardModal">
                         <div class="card-body text-center">
@@ -100,7 +121,8 @@
 <!-- Add Card Modal ends here -->
 
 <!--  Delete Card Confirmation Modal starts here -->
-<div class="modal fade" id="deleteCardConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteCardConfirmationLabel">
+<div class="modal fade" id="deleteCardConfirmationModal" tabindex="-1" role="dialog"
+     aria-labelledby="deleteCardConfirmationLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -160,47 +182,6 @@
     </div>
 </div>
 <!-- Edit Card Modal ends here -->
-
-<!-- Show Card Modal starts here -->
-<div class="modal fade" id="showCardModal" tabindex="-1" role="dialog" aria-labelledby="showCardModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="showCardModalLabel">Flashcard</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 id="displayCardWord"></h2>
-                <div>
-
-                    <table class="table table-striped">
-                        <tbody>
-                            <tr>
-                                <td><strong>Definition: </strong></td>
-                                <td><p id="displayCardDefinition"></p></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Sentence: </strong></td>
-                                <td><p id="displayCardSentence"></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Mnemonic: </strong></td>
-                                <td><p id="displayCardMnemonic"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Show Card Modal ends here -->
 {% endblock %}
 
 

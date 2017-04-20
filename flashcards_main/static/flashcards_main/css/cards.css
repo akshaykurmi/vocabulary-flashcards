@@ -11,7 +11,7 @@
 
 .card-block {
     background: #f5f5f5;
-    height: 150px;
+    height: 305px;
     overflow-y: scroll;
     border-radius: 4px;
 
@@ -24,14 +24,62 @@
     margin-bottom: 10px;
 }
 
-.card-body {
+.card-body-front {
     color: black;
+    height: 80%;
+    padding-top: 7%;
+}
+
+.card-body-back {
+    color: black;
+    height: 80%;
+}
+
+.card-body-back p {
+    font-size: 18px;
 }
 
 .add-card-block {
     background: #f5f5f5;
-    height: 150px;
+    height: 300px;
     overflow-y: scroll;
     border-radius: 4px;
-    padding-top: 35px;
+    padding-top: 90px;
+    margin-top: 13px;
+}
+
+.flip-container {
+	perspective: 1000px;
+}
+
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+	width: 279px;
+	height: 320px;
+}
+
+.flipper {
+	transition: 1s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: -8px;
+	padding: 10px 10px;
+}
+
+.front {
+	z-index: 2;
+	transform: rotateY(0deg);
+}
+
+.back {
+	transform: rotateY(180deg);
 }
