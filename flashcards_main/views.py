@@ -110,6 +110,12 @@ def add_card(request, deck_id):
     definition = request.POST.get("cardDefinition", "")
     sentence = request.POST.get("cardSentence", "")
     mnemonic = request.POST.get("cardMnemonic", "")
+    if FlashCard.objects.filter(word=word).exists():
+        c = FlashCard.objects.get(word=word)
+        card = FlashCard(word=c.word, definition=c.definition, sample_sentence=c.sample_sentence,
+                         mnemonic=c.mnemonic, deck_id=deck_id)
+        card.save()
+        return JsonResponse({"success": True})
     if word == "" or definition == "":
         return JsonResponse({"success": False, "errorMessage": "The Card's word/definition cannot be empty"})
     card = FlashCard(word=word, definition=definition, sample_sentence=sentence, mnemonic=mnemonic, deck_id=deck_id)
