@@ -28,8 +28,9 @@
                                 <a href="javascript: deleteCard({{ card.id }})" class="col-md-1 col-sm-1 pull-right">
                                     <h5><i class="glyphicon glyphicon-trash"></i></h5>
                                 </a>
-                                <a href="javascript: editCard({{ card.id }}, '{{ card.word }}', '{{ card.definition }}',
-                        '{{ card.sample_sentence }}', '{{ card.mnemonic }}')" class="col-md-1 col-sm-1 pull-right">
+                                <a href="javascript: editCard({{ card.id }}, '{{ card.word|addslashes }}',
+                                '{{ card.definition|addslashes }}', '{{ card.sample_sentence|addslashes }}',
+                                '{{ card.mnemonic|addslashes }}')" class="col-md-1 col-sm-1 pull-right">
                                     <h5><i class="glyphicon glyphicon-pencil"></i></h5>
                                 </a>
                             </div>
@@ -46,8 +47,9 @@
                                 <a href="javascript: deleteCard({{ card.id }})" class="col-md-1 col-sm-1 pull-right">
                                     <h5><i class="glyphicon glyphicon-trash"></i></h5>
                                 </a>
-                                <a href="javascript: editCard({{ card.id }}, '{{ card.word }}', '{{ card.definition }}',
-                        '{{ card.sample_sentence }}', '{{ card.mnemonic }}')" class="col-md-1 col-sm-1 pull-right">
+                                <a href="javascript: editCard({{ card.id }}, '{{ card.word|addslashes }}',
+                                '{{ card.definition|addslashes }}', '{{ card.sample_sentence|addslashes }}',
+                                '{{ card.mnemonic|addslashes }}')" class="col-md-1 col-sm-1 pull-right">
                                     <h5><i class="glyphicon glyphicon-pencil"></i></h5>
                                 </a>
                             </div>
