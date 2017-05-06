@@ -1,9 +1,10 @@
 body {
     padding: 0px;
+    background-image: url('../images/background2.jpg');
 }
 
 .header {
-    background-color: red;
+    background-image: url('../images/background.png');
     padding-top: 3%;
     padding-bottom: 1%;
 }
