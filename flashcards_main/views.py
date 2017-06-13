@@ -111,7 +111,7 @@ def add_card(request, deck_id):
     sentence = request.POST.get("cardSentence", "")
     mnemonic = request.POST.get("cardMnemonic", "")
     if FlashCard.objects.filter(word=word).exists():
-        c = FlashCard.objects.get(word=word)
+        c = FlashCard.objects.filter(word=word)[0]
         card = FlashCard(word=c.word, definition=c.definition, sample_sentence=c.sample_sentence,
                          mnemonic=c.mnemonic, deck_id=deck_id)
         card.save()
